@@ -1,15 +1,8 @@
-export default function sortHeroesInDescendingHealth(data) {
-  for (let i = 0; i < data.length - 1; i += 1) {
-    if (
-      data[i].name === undefined
-      || data[i].health === undefined
-      || typeof data[i].health === 'string'
-    ) return null;
-  }
+import sortUnits from './sort';
 
-  const newArray = data;
-
-  newArray.sort((a, b) => b.health - a.health);
-
-  return newArray;
-}
+const a = [
+  { name: 'мечник', health: 10 },
+  { name: 'маг', health: 100 },
+  { name: 'лучник', health: 80 },
+];
+sortUnits(a);

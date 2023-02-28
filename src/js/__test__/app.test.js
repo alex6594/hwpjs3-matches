@@ -1,54 +1,31 @@
-import sortHeroesInDescendingHealth from '../app';
+import sortUnits from '../sort';
 
-test('Проверка сортировка по убыванию', () => {
-  const data = [
+test('sort tobe mistake', () => {
+  const a = [
     { name: 'мечник', health: 10 },
     { name: 'маг', health: 100 },
     { name: 'лучник', health: 80 },
   ];
-  const expectedData = [
+  const b = [
     { name: 'маг', health: 100 },
     { name: 'лучник', health: 80 },
     { name: 'мечник', health: 10 },
   ];
-
-  const sortingData = sortHeroesInDescendingHealth(data);
-
-  expect(sortingData).toEqual(expectedData);
+  const result = sortUnits(a);
+  expect(result).not.toBe(b);
 });
 
-test('проверка на отсутвие поля: name', () => {
-  const data = [
+test('sort toEqual success', () => {
+  const a = [
     { name: 'мечник', health: 10 },
-    { health: 100 },
+    { name: 'маг', health: 100 },
     { name: 'лучник', health: 80 },
   ];
-
-  const sortingData = sortHeroesInDescendingHealth(data);
-
-  expect(sortingData).toEqual(null);
-});
-
-test('проверка на отсутвие поля: health', () => {
-  const data = [
-    { name: 'мечник', health: 10 },
-    { name: 'маг' },
+  const b = [
+    { name: 'маг', health: 100 },
     { name: 'лучник', health: 80 },
-  ];
-
-  const sortingData = sortHeroesInDescendingHealth(data);
-
-  expect(sortingData).toEqual(null);
-});
-
-test('проверка поля: health на строку', () => {
-  const data = [
     { name: 'мечник', health: 10 },
-    { name: 'маг', health: 'health' },
-    { name: 'лучник', health: 80 },
   ];
-
-  const sortingData = sortHeroesInDescendingHealth(data);
-
-  expect(sortingData).toEqual(null);
+  const result = sortUnits(a);
+  expect(result).toEqual(b);
 });
